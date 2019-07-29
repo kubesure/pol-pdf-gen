@@ -7,11 +7,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import kubesure.io.pol.pdf.gen.PolicyPDFGeneratorHandler;
-
 public class PolicyPDFGeneratorTest {
     @Test public void testSomeLibraryMethod() {
-        PolicyPDFGeneratorHandler pg = new PolicyPDFGeneratorHandler();
+        //PolicyPDFGeneratorHandler pg = new PolicyPDFGeneratorHandler();
         assertEquals("someLibraryMethod should return 'true'", "someLibraryMethod should return 'true'");
     }
 }
