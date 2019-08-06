@@ -63,7 +63,7 @@ public class PolicyPDFGeneratorHandler implements RequestHandler<S3Event, String
         ObjectMetadata meta = new ObjectMetadata();
         meta.setContentType("application/pdf");
         meta.setContentLength(pdf.length);
-        String polnumber = objectName.substring(29, objectName.indexOf("."));
+        String polnumber = objectName.substring(objectName.indexOf("/") + 1, objectName.indexOf("."));
         PutObjectResult result = s3.putObject(bucketName, "unprocessed/"+ polnumber+".pdf", in, meta);
         in.close();
         return result.getVersionId();
@@ -77,7 +77,6 @@ public class PolicyPDFGeneratorHandler implements RequestHandler<S3Event, String
         renderer.layout();
         try(ByteArrayOutputStream bos = new ByteArrayOutputStream(htmlString.length())) {
             renderer.createPDF(bos);
-            //logger.log(bos.toByteArray());
             return bos.toByteArray();
         }
     }

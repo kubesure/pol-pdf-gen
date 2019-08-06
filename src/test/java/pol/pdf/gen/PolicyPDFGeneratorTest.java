@@ -32,7 +32,7 @@ public class PolicyPDFGeneratorTest {
             }
         };
        
-        URL url = getClass().getResource("unprocessed_html_1234567890.html");
+        URL url = getClass().getResource("1234567890.html");
         File file = new File(url.getPath());
         BufferedReader reader = new BufferedReader(new FileReader(file));
         StringBuilder sbuilder = new StringBuilder();
@@ -50,8 +50,8 @@ public class PolicyPDFGeneratorTest {
 
     @Test
     public void testFileSubString() {
-        String objectKey = "unprocessed/unprocessed_html_1234567890.html";
-        String polnumber = objectKey.substring(29, objectKey.indexOf("."));
+        String key = "unprocessed/1234567890.html";
+        String polnumber = key.substring(key.indexOf("/") + 1, key.indexOf("."));
         assertEquals("1234567890", polnumber);
     }
 }
