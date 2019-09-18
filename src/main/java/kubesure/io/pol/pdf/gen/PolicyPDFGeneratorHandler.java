@@ -22,6 +22,10 @@ import com.amazonaws.services.s3.model.S3ObjectInputStream;
 
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
+/*
+ * Generates PDF document by when S3 emits policy issued data in a json file. 
+ * The service read the json and constructs a PDF for emailer to send the PDF as attachemet.  
+ */
 public class PolicyPDFGeneratorHandler implements RequestHandler<S3Event, String> {
 
     @Override
@@ -40,6 +44,7 @@ public class PolicyPDFGeneratorHandler implements RequestHandler<S3Event, String
         return result;
     }
 
+    //Reads json, generates PDF and put the PDF to S3 unprocessed folder.
     private String processEvent(S3EventNotificationRecord record, LambdaLogger logger) throws Exception {
         AmazonS3 s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_1).build();
         String bucketName = record.getS3().getBucket().getName();
