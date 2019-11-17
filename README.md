@@ -118,3 +118,10 @@
     --query 'LogResult' \
     --output text |  base64 -d
 ```
+
+7. 
+```
+    aws lambda update-function-code \
+    --function-name esyhealth-pol-issued-email \
+    --zip-file fileb://function.zip
+```
